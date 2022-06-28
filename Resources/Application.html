@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BUBBLE-BRUST-II</title>
+	<style type="text/css">
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		::-webkit-scrollbar
+		{
+			opacity: 0;
+			width: 0;
+		}
+		#startInfo
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 50%;
+			height: 50%;
+			background: black;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+			/*display: none;*/
+		}
+		#startInfo:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 10px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 10px lightgreen;
+		}
+		#startInfo_btn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 10px;
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#startInfo_btn:hover
+		{
+			letter-spacing: 10px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#startInfo h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#startInfo h4
+		{
+			font-size: 1.5em;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#startInfo h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#startInfo p
+		{
+			font-size: 1.5rem;
+			transition: 0.5s;
+			font-family: supercell-magic;
+			color: white;
+		}
+		#scoreUI
+		{
+			position: absolute;
+			top: 5%;
+			left: 30%;
+			transform: translate(-50%,-50%);
+			font-family: sectar;
+			color: orange;
+			user-select: none;
+			font-size: 2.5rem;
+			transition: 0.5s;
+			text-shadow: 0 0 10px black, 0 0 40px black, 0 0 20px black, 0 0 40px black, 0 0 10px black;
+		}
+		#waveUI
+		{
+			position: absolute;
+			top: 5%;
+			left: 70%;
+			transform: translate(-50%,-50%);
+			font-family: sectar;
+			color: orange;
+			user-select: none;
+			font-size: 2.5rem;
+			transition: 0.5s;
+			text-shadow: 0 0 10px black, 0 0 40px black, 0 0 20px black, 0 0 40px black, 0 0 10px black;
+		}
+		#endInfo
+		{
+			position: absolute;
+			top: -100%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			user-select: none;
+			width: 90%;
+			height: 90%;
+			transition: 0.5s;
+			background: black;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+			font-family: sectar;
+			color: red;
+		}
+		#endInfo:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 10px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 10px lightgreen;
+		}
+		#endInfo h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#endInfo h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#endInfo #generalTxt
+		{
+			font-size: 1rem;
+			transition: 0.5s;
+			user-select: none;
+			color: white;
+			font-family: supercell-magic;
+		}
+		#endInfo #scoreTxt,#waveTxt
+		{
+			font-size: 1.5rem;
+			transition: 0.5s;
+		}
+		#endInfo #bubbleBrust_Txt,#bubbleMissed_Txt
+		{
+			font-size: 1.5rem;
+			transition: 0.5s;
+		}
+		#endInfo #bonusItem,#totalScore
+		{
+			font-size: 2rem;
+			color: orange;
+		}
+		#endInfo table
+		{
+			justify-content: center;
+			text-align: center;
+			align-self: center;
+			position: absolute;
+			top: 62%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+		#endInfo tr:hover td
+		{
+			filter: blur(40px);
+			transition: 0.5s;
+		}
+		#endInfo tr td
+		{
+			padding: 5px;
+			margin: 10px;
+			transition: 0.5s;
+			color: white;
+			font-size: 18px;
+			font-family: comic sans ms;
+		}
+		#endInfo tr td:hover
+		{
+			box-shadow: 0 0 10px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 10px white;
+			transition: 0.5s; 
+			letter-spacing: 3px;
+			filter: blur(0px);
+		}
+		#endInfo_mainMenuBtn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 5px;
+			top: 85%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#endInfo_mainMenuBtn:hover
+		{
+			letter-spacing: 5px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#endInfo_submitBtn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 5px;
+			top: 95%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#endInfo_submitBtn:hover
+		{
+			letter-spacing: 5px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#submitScore
+		{
+			position: absolute;
+			top: 50%;
+			left: 150%;
+			transform: translate(-50%,-50%);
+			user-select: none;
+			width: 90%;
+			height: 90%;
+			transition: 0.5s;
+			background: black;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+			font-family: sectar;
+			color: red;
+			display: none;
+		}
+		#submitScore:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 10px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 10px lightgreen;
+		}
+		#submitScore h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#submitScore h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#submitScore h3
+		{
+			font-size: 2rem;
+			transition: 0.5s;
+			user-select: none;
+			color: orange;
+		}
+		#submitScore input
+		{
+			width: 400px;
+			height: 60px;
+			outline: none;
+			border: 2px solid green;
+			color: green;
+			background: transparent;
+			border-radius: 100px;
+			transition: 0.5s;
+			text-align: center;
+			justify-content: center;
+			font-family: supercell-magic;
+			font-size: 2rem;
+		}
+		#submitScore input:focus
+		{
+			transition: 0.5s;
+			width: 600px;
+			box-shadow: 0 0 10px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 10px white;
+			background: lightgreen;
+		}
+		#submitBtn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 5px;
+			top: 70%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#submitBtn:hover
+		{
+			letter-spacing: 5px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#back
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 5px;
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#back:hover
+		{
+			letter-spacing: 5px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#restart
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 5px;
+			top: 90%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#restart:hover
+		{
+			letter-spacing: 5px;
+			width: 500px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#submitScore p
+		{
+			font-family: supercell-magic;
+			font-size: 1.2rem;
+			color: white;
+		}
+		#layer
+		{
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+<div id="scoreUI">SCORE : 0</div>
+<div id="waveUI">CURRENT WAVE : 1</div>
+
+<div id="startInfo">
+	<h1>BUBBLE BRUST II</h1>
+	<br>
+	<h4>DIVE INTO DEEP DARK OCEAN</h4>
+	<br>
+	<hr>
+
+	<p>When you are ready to dive press "START" button!</p>
+
+	<span id="startInfo_btn">START</span>
+
+</div>
+<div id="layer">
+
+<div id="endInfo">
+	<h1>GAME OVER!</h1>
+	<br>
+	<hr>
+	<br>
+
+	<p id="generalTxt">May Be Some Fish Had A Great Dinner To Night! But Do Not Forget To Submit Your Final Score
+		<br>
+		GOD KNOWS!!!....May be you are the next who get a chance to placed in WALL OF FAME! :)
+	</p>
+	<br>
+	<p id="scoreTxt">YOUR SCORE : 1000</p>
+	<p id="waveTxt">WAVE CLEARED : 5</p>
+	<p id="bubbleBrust_Txt">BUBBLE BRUST : 500</p>
+	<p id="bubbleMissed_Txt">BUBBLE MISSED : 111</p>
+	<br>
+	<p id="bonusItem">BONUS ITEMS COLLECTION</p>
+	<table>
+		<tr>
+			<td title="SILVER COIN"><img src="spritesheet/Bonus/silverCoin.png"></td>
+			<td title="GOLD COIN"><img src="spritesheet/Bonus/goldCoin.png"></td>
+			<td title="DIMOND"><img src="spritesheet/Bonus/dimond.png"></td>
+			<td title="COMMON MAGIC BALL"><img src="spritesheet/Bonus/dimondBall.png"></td>
+			<td title="EPIC MAGIC BALL"><img src="spritesheet/Bonus/dimondBall1.png"></td>
+			<td title="LEGENDARY MAGIC BALL"><img src="spritesheet/Bonus/dimondBall2.png"></td>
+		</tr>
+		<tr>
+			<td id="silver">5*10 = 50</td>
+			<td id="gold">6*20 = 120</td>
+			<td id="dimond">7*50 = 350</td>
+			<td id="common">5*100 = 500</td>
+			<td id="epic">2*500 = 1000</td>
+			<td id="legendary">0*1000 = 0</td>
+		</tr>
+	</table>
+	<div>
+		<p id="totalScore">FINAL SCORE : 10000</p>
+	</div>
+	<br>
+	<br>
+
+	<span id="endInfo_mainMenuBtn">RETURN TO MAIN MENU</span>
+	<br>
+	<span id="endInfo_submitBtn">SUBMIT SCORE</span>
+
+</div>
+
+<div id="submitScore">
+	<h1>SUBMIT YOUR SCORE HERE!</h1>
+	<br>
+	<hr>
+	<br>
+	<br>
+	<p>Enter your name for getting a place in wall of fame! Do you know WALL OF FAME shows TOP 10 score so, Tell your name, who knows! May be you are the next playes who will get a chance to stand in WALL OF FAME!</p>
+	<br>
+	<br>
+	<br>
+	<h3>ENTER YOUR NAME</h3>
+	<br>
+	<input type="" name="" size="50" id="nameUI">
+	<br>
+	<br>
+	<br>
+	<br>
+	<span id="submitBtn">SAVE MY SCORE</span>
+	<span id="back">BACK</span>
+	<span id="restart">RESTART</span>
+</div>
+
+</div>
+
+<canvas>...CANVAS IS NOT SUPPORTED IN YOUR BROWSER...</canvas>
+
+</body>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/allClassesAndFunctions.js"></script>
+<script type="text/javascript">
+	
+//Canvas Initiallization Is Here.......................................................................
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+//window.addEventListener('load',() => {
+	let bgMusic1 = new Audio('Sounds/waterflow_underwater.mp3');
+	let bgMusic4 = new Audio('Sounds/waterflow_03.wav');
+	let bgMusic5 = new Audio('Sounds/menu_music_01.wav');
+	let bgMusic6 = new Audio('Sounds/menu_music_02.wav');
+
+	let playerSpawn = new Audio('Sounds/playerSpawn.mp3');
+	let dropSound = new Audio('Sounds/Mermaid.mp3');
+
+	let gameOver = new Audio('Sounds/gameover_01.mp3');
+	let gameOverVoice = new Audio('Sounds/gameover.mp3');
+
+	let popSound1 = new Audio('Sounds/bubble_pop_1.mp3');
+	popSound1.volume=0.3;
+	let popSound2 = new Audio('Sounds/bubble_pop_2.mp3');
+	popSound2.volume=0.3;
+
+	let silverPickUp = new Audio('Sounds/silverCoin.mp3');
+	let goldPickUp = new Audio('Sounds/goldCoin.mp3');
+	let dimondPickUp = new Audio('Sounds/dimond.mp3');
+	let commonPickUp = new Audio('Sounds/commonBall.mp3');
+	let epicPickUp = new Audio('Sounds/epicBall.mp3');
+	let legendaryPickUp = new Audio('Sounds/legendaryBall.mp3');
+
+	let mouseOVER = new Audio('Sounds/mouseOver.mp3');
+	mouseOVER.volume=1;
+	let mouseDOWN = new Audio('Sounds/mouseDown.mp3');
+	mouseDOWN.volume=1;
+//});
+
+function playBgMusic()
+{
+	bgMusic1.play();
+	bgMusic1.volume = 0.4;
+	setTimeout(() => {
+		playBgMusic1();
+	},153000);
+}
+function playBgMusic1()
+{
+	bgMusic4.play();
+	setTimeout(()=>{
+		playBgMusic();
+	},6500);
+}
+function playSubBgMusic()
+{
+	bgMusic5.play();
+	bgMusic5.volume = 0.5;
+	setTimeout(() => {
+		playSubBgMusic1();
+	},73000);
+}
+function playSubBgMusic1()
+{
+	bgMusic6.play();
+	bgMusic6.volume = 0.5;
+	setTimeout(() => {
+		playSubBgMusic();
+	},73000);
+}
+
+/*
+//Just For Testing........................................................................................
+c.fillStyle = 'red';
+c.fillRect(0,0,canvas.width,canvas.height);
+*/
+
+//All Required Variables Are Here.....................................................................
+//All Required Arrays Are Here........................................................................
+let gameFrame = 0;
+let animID;
+let fish_spawn_ID;
+let jellyFish_spawn_ID;
+let bonusFish_spawn_ID;
+let bubble_spawn_ID;
+let enemyArray = [];
+let enemyJellyFishArray = [];
+let bonusFishArray = [];
+let bonusItemsArray = [];
+let bubbleArray = [];
+let mouse = {
+	x: canvas.width/2,
+	y: 0
+};
+let dimondCollected = 0;
+let commonMagicBallCollected = 0;
+let epicMagicBallCollected = 0;
+let legendareyMagicBallCollected = 0;
+let goldCoinCollected = 0;
+let silverCoinCollected = 0;
+let bubbleBrust = 0;
+let bubbleMissed = 0;
+let score = 0;
+let currentWave = 1;
+let playersDataArray = [];
+let playerData = {
+	bubbleBrust : 0,
+	bubbleMissed : 0,
+	waveCleared : 0,
+	silverCoin : 0,
+	goldCoin : 0,
+	dimond : 0,
+	commomBall :0,
+	epicBall : 0,
+	legendaryBall : 0,
+	score : 0,
+	name : undefined
+}
+let playerNAME = "";
+let totalScore = 0;
+let playerImgRightFacing = new Image();
+let playerImgLeftFacing = new Image();
+let isSaved = false;
+
+function savePlayerData(NAME)
+{
+	playerData = {
+		bubbleBrust : +bubbleBrust,
+		bubbleMissed : +bubbleMissed,
+		waveCleared : +currentWave,
+		silverCoin : +silverCoinCollected,
+		goldCoin : +goldCoinCollected,
+		dimond : +dimondCollected,
+		commomBall : +commonMagicBallCollected,
+		epicBall : +epicMagicBallCollected,
+		legendaryBall : +legendareyMagicBallCollected,
+		score : +totalScore,
+		playerName : NAME,
+		activeSkin : "red",
+		skinCollectionArray : ["red"]
+	}
+	//playersDataArray.push(playerData);
+	/*
+		if(playersDataArray)
+	 {
+	 	localStore = localStorage.setItem("PLAYERS_DATA",JSON.stringify(playersDataArray));
+	 	//let data = JSON.parse(localStore.getItem("PLAYERS_DATA"));//only when we need to use...
+	 	var data = localStorage.getItem("PLAYERS_DATA");
+	 	alert(data);
+	 }
+	*/
+	var data = localStorage.getItem("PLAYERS_DATA");
+	if(data)
+	{
+		var arrayOfDataOfPlayers = JSON.parse(localStorage.getItem("PLAYERS_DATA"));
+		console.log(arrayOfDataOfPlayers);
+		let isExits = false;
+		let memberIndex;
+		arrayOfDataOfPlayers.forEach((player,index) => {
+			if(player.playerName==NAME)
+			{
+				isExits = true;
+				memberIndex = index;
+			}
+		});
+		if(isExits)
+		{
+			playerData = {
+				bubbleBrust : ((arrayOfDataOfPlayers[memberIndex].bubbleBrust<=bubbleBrust)?bubbleBrust:arrayOfDataOfPlayers[memberIndex].bubbleBrust),
+				bubbleMissed : ((arrayOfDataOfPlayers[memberIndex].bubbleMissed<=bubbleMissed)?bubbleMissed:arrayOfDataOfPlayers[memberIndex].bubbleMissed),
+				waveCleared : ((arrayOfDataOfPlayers[memberIndex].waveCleared<=currentWave)?currentWave:arrayOfDataOfPlayers[memberIndex].waveCleared),
+				silverCoin : arrayOfDataOfPlayers[memberIndex].silverCoin+silverCoinCollected,
+				goldCoin : arrayOfDataOfPlayers[memberIndex].goldCoin+goldCoinCollected,
+				dimond : arrayOfDataOfPlayers[memberIndex].dimond+dimondCollected,
+				commomBall : arrayOfDataOfPlayers[memberIndex].commomBall+commonMagicBallCollected,
+				epicBall : arrayOfDataOfPlayers[memberIndex].epicBall+epicMagicBallCollected,
+				legendaryBall : arrayOfDataOfPlayers[memberIndex].legendaryBall+legendareyMagicBallCollected,
+				score : ((arrayOfDataOfPlayers[memberIndex].score<=totalScore)?totalScore:arrayOfDataOfPlayers[memberIndex].score),
+				playerName : NAME,
+				activeSkin : arrayOfDataOfPlayers[memberIndex].activeSkin,
+				skinCollectionArray : arrayOfDataOfPlayers[memberIndex].skinCollectionArray
+			}
+			arrayOfDataOfPlayers.splice(memberIndex,1);
+			arrayOfDataOfPlayers.push(playerData);
+			localStore = localStorage.setItem("PLAYERS_DATA",JSON.stringify(arrayOfDataOfPlayers));
+			isSaved=true;
+			alert("YOUR DATA HAS BEEN MODIFIED SUCCESSFULLY!");
+		}
+		else
+		{
+			arrayOfDataOfPlayers.push(playerData);
+			localStore = localStorage.setItem("PLAYERS_DATA",JSON.stringify(arrayOfDataOfPlayers));	
+			alert("YOUR DATA HAS BEEN STORED SUCCESSFULLY!");
+		}
+	}
+	else
+	{
+		playersDataArray.push(playerData);
+		localStore = localStorage.setItem("PLAYERS_DATA",JSON.stringify(playersDataArray));
+		alert("YOUR DATA HAS BEEN STORED SUCCESSFULLY!");
+	}
+
+}
+
+//window.addEventListener('load',() => {
+	let localLOAD = localStorage.getItem("IS_LOADED");
+	console.log(localLOAD);
+	let localPLAYER;
+//});
+//window.addEventListener('load',() => {
+if(localLOAD == "true")
+{
+	console.log("INSIDE TRUE");
+	localPLAYER = JSON.parse(localStorage.getItem("LOCAL_PLAYER"));
+	console.log(localPLAYER);
+	if(localPLAYER.activeSkin=="black")
+	{
+		console.log("BLACK SKIN");
+		playerImgLeftFacing.src = "spritesheet/player/left/black.png";
+		playerImgRightFacing.src = "spritesheet/player/left/black1.png";
+	}
+	else if(localPLAYER.activeSkin=="green")
+	{
+		playerImgLeftFacing.src = "spritesheet/player/left/green.png";
+		playerImgRightFacing.src = "spritesheet/player/left/green1.png";	
+	}
+	else if(localPLAYER.activeSkin=="purple")
+	{
+		playerImgLeftFacing.src = "spritesheet/player/left/purple.png";
+		playerImgRightFacing.src = "spritesheet/player/left/purple1.png";	
+	}
+	else if(localPLAYER.activeSkin=="yellow")
+	{
+		playerImgLeftFacing.src = "spritesheet/player/left/yellow.png";
+		playerImgRightFacing.src = "spritesheet/player/left/yellow1.png";	
+	}
+	else if(localPLAYER.activeSkin=="blue")
+	{
+		playerImgLeftFacing.src = "spritesheet/player/left/blue.png";
+		playerImgRightFacing.src = "spritesheet/player/left/blue1.png";	
+	}
+	else if(localPLAYER.activeSkin=="red")
+	{
+		playerImgLeftFacing.src = "spritesheet/player/left/red.png";
+		playerImgRightFacing.src = "spritesheet/player/left/red1.png";	
+	}
+}
+else
+{
+	console.log("INSIDE ELSE");
+	playerImgLeftFacing.src = "spritesheet/player/left/red.png";
+	playerImgRightFacing.src = "spritesheet/player/left/red1.png";		
+}
+//});
+
+let localStore;
+
+$("#submitBtn").click(function(){
+	var name = document.getElementById('nameUI').value;
+	if(isSaved==false)
+	{
+		savePlayerData(name);
+	}
+	else
+	{
+		alert("YOU HAVE SAVED YOUR SCORE ONCE!");
+	}
+	mouseDOWN.play();
+});
+
+$("#submitBtn").mouseenter(function(){
+	mouseOVER.play();
+});
+
+$("#endInfo_mainMenuBtn").click(function(){
+	mouseDOWN.play();
+	setTimeout(() => {
+		window.location = "../index.html";
+	},999);
+});
+$("#endInfo_mainMenuBtn").mouseenter(function(){
+	mouseOVER.play();
+});
+
+$("#endInfo_submitBtn").click(function(){
+	mouseDOWN.play();
+	//	$("#submitScore").css("display","block");
+	$("#submitScore").css("left","50%");
+	$("#endInfo").css("top","-150%");
+	//setTimeout(() => {
+	//},100);
+});
+$("#endInfo_submitBtn").mouseenter(function(){
+	mouseOVER.play();
+});
+
+$("#back").click(function(){
+	mouseDOWN.play();
+	$("#submitScore").css("left","150%");
+	/*setTimeout(() => {
+		$("#submitScore").css("display","none");
+	},1000);*/
+	$("#endInfo").css("top","50%");
+});
+$("#back").mouseenter(function(){
+	mouseOVER.play();
+});
+
+$("#restart").mouseenter(function(){
+	mouseOVER.play();
+});
+
+$("#restart").click(function(){
+	mouseDOWN.play();
+	window.location = "Application.html";
+});
+
+
+function init()
+{
+	 gameFrame = 0;
+	 animID;
+	 fish_spawn_ID;
+	 jellyFish_spawn_ID;
+	 bonusFish_spawn_ID;
+	 bubble_spawn_ID;
+	 enemyArray = [];
+	 enemyJellyFishArray = [];
+	 bonusFishArray = [];
+	 bonusItemsArray = [];
+ 	bubbleArray = [];
+	 mouse = {
+		x: canvas.width/2,
+		y: 0
+	};
+	 dimondCollected = 0;
+	 commonMagicBallCollected = 0;
+	 epicMagicBallCollected = 0;
+	 legendareyMagicBallCollected = 0;
+	 goldCoinCollected = 0;
+	 silverCoinCollected = 0;
+	 bubbleBrust = 0;
+	 bubbleMissed = 0;
+	 score = 0;
+}
+
+/*window.addEventListener('load',() => {
+	spawnBonusFish();
+	spawnEnemyFish();
+	spawnEnemyJellyFish();
+	spawnBubbles();
+	MainAnimationLoop();
+	window.addEventListener('mousemove',(e) => {
+		mouse.x = e.clientX;
+		mouse.y = e.clientY;
+	});
+});*/
+
+$("#startInfo_btn").click(function(){
+
+	init();
+	spawnBonusFish();
+	spawnEnemyFish();
+	spawnEnemyJellyFish();
+	spawnBubbles();
+	MainAnimationLoop();
+	window.addEventListener('mousemove',(e) => {
+		mouse.x = e.clientX;
+		mouse.y = e.clientY;
+	});
+	$("#startInfo").css("top","-100%");
+	playerSpawn.play();
+	playBgMusic();
+	playSubBgMusic();
+});
+
+class player
+{
+	constructor(x,y)
+	{
+		this.x=x;
+		this.y=y;
+		this.radius=45;
+		this.frameX = 0;
+		this.frameY = 0;
+		this.frame = 0;
+		this.spriteWidth = 498;
+		this.spriteHeight = 327;
+		this.rotate = 59.75;
+	}
+
+	draw()
+	{
+		/*
+		//TestCircle
+		c.beginPath();
+		c.arc(this.x,this.y,this.radius,Math.PI*2,false);
+		c.fillStyle = "blue";
+		c.fill();
+		c.closePath();
+		*/
+		
+		if(this.x >= mouse.x)
+		{
+			c.drawImage(playerImgLeftFacing,this.frameX*this.spriteWidth,this.frameY*this.spriteHeight,this.spriteWidth,this.spriteHeight,this.x-60,this.y-45,this.spriteWidth/4,this.spriteHeight/4);
+		}
+		else
+		{
+			c.save();
+			c.translate(this.x,this.y);
+			c.rotate(this.rotate);
+			c.drawImage(playerImgRightFacing,this.frameX*this.spriteWidth,this.frameY*this.spriteHeight,this.spriteWidth,this.spriteHeight,0-60,0-45,this.spriteWidth/4,this.spriteHeight/4);
+			c.restore();
+		}
+	}
+
+	update()
+	{
+		this.draw();
+		if(gameFrame%5==0)
+		{
+			this.frame++;
+			if(this.frame>=12)
+			{
+				this.frame=0;
+			}
+
+			if(this.frame==3 || this.frame==7 || this.frame==11)
+			{
+				this.frameX=0;
+			}
+			else
+			{
+				this.frameX++;
+			}
+
+			if(this.frame<3)
+			{
+				this.frameY=0;
+			}
+			else if(this.frame<7)
+			{
+				this.frameY=1;
+			}
+			else if(this.frame<11)
+			{
+				this.frameY=2;
+			}
+			else
+			{
+				this.frameY=0;
+			}
+		}
+		let dx = this.x-mouse.x;
+		this.x -= dx/8;
+		let dy = this.y-mouse.y;
+		this.y -= dy/8;
+	}
+}
+
+
+//Initiallizing Player..................
+let Player = new player(canvas.width/2,canvas.height/2);
+
+function MainAnimationLoop()
+{
+	animID = requestAnimationFrame(MainAnimationLoop);
+
+	c.clearRect(0,0,canvas.width,canvas.height);
+
+	c.drawImage(bgImage,0,0,canvas.width,canvas.height);
+
+	enemyArray.forEach((enemy,index) => {
+		let distance = Math.hypot(enemy.x-Player.x,enemy.y-Player.y);
+		if(enemy.fromLeft==true)
+		{
+			if(enemy.x > canvas.width+200)
+			{
+				setTimeout(()=>{
+					enemyArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				enemy.update();
+			}
+		}
+		else
+		{
+			if(enemy.x < -200)
+			{
+				setTimeout(()=>{
+					enemyArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				enemy.update();
+			}	
+		}
+
+		if(distance<enemy.radius+Player.radius)
+		{
+			GameOver();
+		}
+
+	});
+
+	enemyJellyFishArray.forEach((enemy,index) => {
+		let distance = Math.hypot(enemy.x-Player.x,enemy.y-Player.y);
+		if(enemy.y<=-100)
+		{
+			setTimeout(() => {
+				enemyJellyFishArray.splice(index,1);
+			},0);
+		}
+		else
+		{
+			enemy.update();
+		}
+
+		if(distance<enemy.radius+Player.radius)
+		{
+			GameOver();
+		}
+
+	});
+
+	bonusFishArray.forEach((bonusFish,index) => {
+
+		if(bonusFish.fromLeft==true)
+		{
+			if(bonusFish.position.x>=canvas.width+200)
+			{
+				setTimeout(() => {
+					bonusFishArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				bonusFish.update();
+			}
+		}
+		else
+		{
+			if(bonusFish.position.x<=-200)
+			{
+				setTimeout(() => {
+					bonusFishArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				bonusFish.update();
+			}
+		}
+
+		if(parseInt(bonusFish.position.x)==parseInt(bonusFish.bonus.x) && parseInt(bonusFish.position.y)==parseInt(bonusFish.bonus.y))
+		{
+			dropBonus(bonusFish.bonus.x,bonusFish.bonus.y);
+		}
+
+	});
+
+	bonusItemsArray.forEach((item,index) => {
+		let distance = Math.hypot(item.x-Player.x,item.y-Player.y);
+		dropSound.play();
+		dropSound.volume = 1;
+		if(item.y>canvas.height+200)
+		{
+			setTimeout(() => {
+				bonusItemsArray.splice(index,1);
+			},0);
+		}
+		else
+		{
+			item.update();
+		}
+		if(distance<item.radius+Player.radius)
+		{
+			if(item.imageSource==0)
+			{
+				dimondCollected+=1;
+				dimondPickUp.play();
+			}
+			else if(item.imageSource==1)
+			{
+				commonMagicBallCollected+=1;
+				commonPickUp.play();
+			}
+			else if(item.imageSource==2)
+			{
+				goldCoinCollected+=1;
+				goldPickUp.play();
+			}
+			else if(item.imageSource==3)
+			{
+				legendareyMagicBallCollected+=1;
+				legendaryPickUp.play();
+			}
+			else if(item.imageSource==4)
+			{
+				silverCoinCollected+=1;
+				silverPickUp.play();
+			}
+			else if(item.imageSource==5)
+			{
+				epicMagicBallCollected+=1;	
+				epicPickUp.play();
+			}
+			else
+			{
+				silverCoinCollected+=1;
+				silverPickUp.play();
+			}
+			setTimeout(() => {
+				bonusItemsArray.splice(index,1);
+				dropSound.pause();
+			},0);
+		}
+
+	});
+
+	bubbleArray.forEach((bubble,index) => {
+		
+		if(bubble.y < -200)
+		{
+			bubbleMissed+=1;
+			score-=3;
+			setTimeout(() => {
+				bubbleArray.splice(index,1);
+			},0);
+		}
+		else
+		{
+			bubble.update();
+		}
+	});
+
+	for(let i=0;i<bubbleArray.length;i++)
+	{
+		let distance = Math.hypot(bubbleArray[i].x-Player.x,bubbleArray[i].y-Player.y);
+		if(distance<bubbleArray[i].radius+Player.radius)
+		{
+			if(bubbleArray[i].counted==false)
+			{
+				bubbleBrust+=1; 
+				score+=parseInt(Math.random()*100 + 10);
+				bubbleArray[i].counted=true;
+			}
+			var chooseMusic = Math.random();
+			brustBubble(i,chooseMusic);
+		}
+	}
+
+	//Player.draw();
+	Player.update();
+	//console.log(bubbleArray);
+	gameFrame++;
+	if(gameFrame%800==0)
+	{
+		var random = parseInt(Math.random()*500);
+		score += random;
+		$("#scoreUI").text("SCORE : "+score);
+	}
+	else
+	{
+		$("#scoreUI").text("SCORE : "+score);
+	}
+
+	if(score>0)
+	{
+		currentWave = parseInt(score/5000) + 1;
+	}
+	$("#waveUI").text("CURRENT WAVE : "+currentWave);
+}
+
+
+</script>
+</html>

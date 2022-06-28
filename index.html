@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BUBBLE-BRUST-II</title>
+	<style type="text/css">
+		*
+		{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		::-webkit-scrollbar
+		{
+			opacity: 0;
+			width: 0;
+		}
+		#main_menu
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 80%;
+			height: 80%;
+			justify-content: center;
+			text-align: center;
+			align-items: center;
+		}
+		#main_menu span
+		{
+			position: absolute;
+			font-family: Ravie Regular;
+			font-size: 2rem;
+			user-select: none;
+			width: 140px;
+			height: 110px;
+			transition: 0.5s;
+			text-align: center;
+			color: yellow;
+		}
+		#main_menu span:hover
+		{
+			letter-spacing: 6px;
+			transition: 0.5s;
+			color: red;
+			text-shadow: 0 0 10px black, 0 0 20px black, 0 0 30px black, 0 0 20px black, 0 0 10px black;
+		}
+		#main_menu span:nth-child(1)
+		{
+			top: 0%;
+			left: 40%;
+		}
+
+		#main_menu span:nth-child(1)::before
+		{
+			content: 'START POPING BUBBLES! BUT BEWARE FROM ENEMY FISH';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			font-family: supercell-Magic;
+			font-size: 1.5rem;			
+			color: black;
+			background: linear-gradient(to right,#ff105f,#ffad06);
+			text-align: center;
+			justify-content: center;
+			margin-top: -14px;
+			margin-left: 120px;
+			z-index: -1;
+			border-radius: 50px;
+			opacity: 0;
+			transition: 0.6s ease;
+			text-shadow: none;
+		}
+		#main_menu span:nth-child(1):hover::before
+		{
+			opacity: 1;
+			width: 300%;
+			height: 100%;
+			left: -400%;
+			letter-spacing: 0;
+			transition: 0.8s;
+		}
+
+		#main_menu span:nth-child(2)
+		{
+			top: 20%;
+			left: 50%;
+		}
+
+		#main_menu span:nth-child(2)::after
+		{
+			content: 'COMPETE WITH OTHERS AND BE THE BEST!';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			font-family: supercell-Magic;
+			font-size: 1.5rem;			
+			color: black;
+			background: linear-gradient(to right,#ff105f,#ffad06);
+			text-align: center;
+			justify-content: center;
+			margin-top: -14px;
+			margin-left: 120px;
+			z-index: -1;
+			border-radius: 50px;
+			opacity: 0;
+			transition: 0.6s ease;
+			text-shadow: none;
+		}
+		#main_menu span:nth-child(2):hover::after
+		{
+			opacity: 1;
+			width: 320%;
+			height: 80%;
+			left: 40%;
+			letter-spacing: 0;
+			transition: 0.8s;
+		}
+
+		#main_menu span:nth-child(3)
+		{
+			top: 40%;
+			left: 40%;
+		}
+
+		#main_menu span:nth-child(3)::before
+		{
+			content: 'CUSTOMIZE YOUR FISH AND SEE MORE! MORE SKINS COMING SOON';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			font-family: supercell-Magic;
+			font-size: 1.5rem;			
+			color: black;
+			background: linear-gradient(to right,#ff105f,#ffad06);
+			text-align: center;
+			justify-content: center;
+			margin-top: -14px;
+			margin-left: 120px;
+			z-index: -1;
+			border-radius: 50px;
+			opacity: 0;
+			transition: 0.6s ease;
+			text-shadow: none;
+		}
+		#main_menu span:nth-child(3):hover::before
+		{
+			opacity: 1;
+			width: 300%;
+			height: 80%;
+			left: -450%;
+			letter-spacing: 0;
+			transition: 0.8s;
+		}
+
+		#main_menu span:nth-child(4)
+		{
+			top: 60%;
+			left: 50%;
+		}
+
+		#main_menu span:nth-child(4)::after
+		{
+			content: 'KNOW HOW TO PLAY AND MORE ABOUT THIS GAME!';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			font-family: supercell-Magic;
+			font-size: 1.5rem;			
+			color: black;
+			background: linear-gradient(to right,#ff105f,#ffad06);
+			text-align: center;
+			justify-content: center;
+			margin-top: -14px;
+			margin-left: 120px;
+			z-index: -1;
+			border-radius: 50px;
+			opacity: 0;
+			transition: 0.6s ease;
+			text-shadow: none;
+		}
+		#main_menu span:nth-child(4):hover::after
+		{
+			opacity: 1;
+			width: 320%;
+			height: 80%;
+			left: 40%;
+			letter-spacing: 0;
+			transition: 0.8s;
+		}
+
+		#main_menu span:nth-child(5)
+		{
+			top: 80%;
+			left: 40%;
+		}
+
+		#main_menu span:nth-child(5)::before
+		{
+			content: 'JUST IN CASE IF YOU FORGET TO LOAD YOUR DATA';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
+			height: 100%;
+			font-family: supercell-Magic;
+			font-size: 1.5rem;			
+			color: black;
+			background: linear-gradient(to right,#ff105f,#ffad06);
+			text-align: center;
+			justify-content: center;
+			margin-top: -14px;
+			margin-left: 120px;
+			z-index: -1;
+			border-radius: 50px;
+			opacity: 0;
+			transition: 0.6s ease;
+			text-shadow: none;
+		}
+		#main_menu span:nth-child(5):hover::before
+		{
+			opacity: 1;
+			width: 300%;
+			height: 80%;
+			left: -450%;
+			letter-spacing: 0;
+			transition: 0.8s;
+		}
+
+		#scoreDisplay
+		{
+			position: absolute;
+			top: -150%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 85%;
+			height: 85%;
+			background: black;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#scoreDisplay h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#scoreDisplay h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#scoreDisplay:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 40px lightgreen;
+		}
+		#scoreDisplay #scoreBackBtn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 10px;
+			top: 80%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#scoreDisplay #scoreBackBtn:hover
+		{
+			letter-spacing: 8px;
+			width: 600px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#scoreDisplay table
+		{
+			position: absolute;
+			top: 30%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 98%;
+			font-family: supercell-magic;
+			font-size: 1.2rem;
+			transition: 0.5s;
+		}
+		#scoreDisplay table tr td
+		{
+			padding: 5px;
+			margin: 50px;
+			transition: 0.5s;
+		}
+		#scoreDisplay table tr:hover td
+		{
+			background: gold;
+			transition: 0.5s;
+		}
+		#scoreDisplay table tr td:hover
+		{
+			background: lightblue;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+			transition: 0.5s;
+		}
+		#settingDisplay
+		{
+			position: absolute;
+			top: -150%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 100%;
+			height: 100%;
+			background: black;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#settingDisplay #backBtn
+		{
+			position: absolute;
+			top: 94%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			color: red;
+			width: 400px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 20px;
+			transition: 0.5s;
+			font-size: 1.9rem;
+		}
+		#settingDisplay #backBtn:hover
+		{
+			letter-spacing: 8px;
+			width: 600px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px red, 0 0 30px red, 0 0 20px red, 0 0 30px red, 0 0 10px red;
+		}
+		#settingDisplay h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#settingDisplay h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#settingDisplay .outerSpans
+		{
+			margin-top: 2%;
+			color: red;
+			width: 350px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+			display: inline-flex;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+		#settingDisplay .outerSpans:hover
+		{
+			letter-spacing: 8px;
+			width: 480px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#commonShop
+		{
+			position: absolute;
+			top: 55%;
+			left: -150%;
+			transform: translate(-50%,-50%);
+			width: 60%;
+			height: 60%;
+			background: lightgreen;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#commonShop:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 40px white;
+		}
+		#epicShop
+		{
+			position: absolute;
+			top: 55%;
+			left: -150%;
+			transform: translate(-50%,-50%);
+			width: 60%;
+			height: 60%;
+			background: lightgreen;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#epicShop:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 40px white;
+		}
+		#legendShop
+		{
+			position: absolute;
+			top: 55%;
+			left: -150%;
+			transform: translate(-50%,-50%);
+			width: 60%;
+			height: 60%;
+			background: lightgreen;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#legendShop:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 40px white;
+		}
+		#quickShop
+		{
+			position: absolute;
+			top: 55%;
+			left: -150%;
+			transform: translate(-50%,-50%);
+			width: 60%;
+			height: 60%;
+			background: lightgreen;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#quickShop:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px white, 0 0 60px white, 0 0 30px white, 0 0 60px white, 0 0 40px white;
+		}
+
+		#commonShop span
+		{
+			color: red;
+			width: 200px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+		#commonShop span:hover
+		{
+			letter-spacing: 3px;
+			width: 300px;
+			transition: 0.5s;
+			color: white;
+			border: 2px solid white;
+			background: black;
+			box-shadow: 0 0 10px black, 0 0 30px black, 0 0 20px black, 0 0 30px black, 0 0 10px black;
+		}
+		#epicShop span
+		{
+			color: red;
+			width: 200px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+		#epicShop span:hover
+		{
+			letter-spacing: 3px;
+			width: 300px;
+			transition: 0.5s;
+			color: white;
+			border: 2px solid white;
+			background: black;
+			box-shadow: 0 0 10px black, 0 0 30px black, 0 0 20px black, 0 0 30px black, 0 0 10px black;
+		}
+		#legendShop span
+		{
+			color: red;
+			width: 200px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+		#legendShop span:hover
+		{
+			letter-spacing: 3px;
+			width: 300px;
+			transition: 0.5s;
+			color: white;
+			border: 2px solid white;
+			background: black;
+			box-shadow: 0 0 10px black, 0 0 30px black, 0 0 20px black, 0 0 30px black, 0 0 10px black;
+		}
+		#quickShop span
+		{
+			color: red;
+			width: 200px;
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 20px;
+			transition: 0.5s;
+		}
+		#quickShop span:hover
+		{
+			letter-spacing: 3px;
+			width: 300px;
+			transition: 0.5s;
+			color: white;
+			border: 2px solid white;
+			background: black;
+			box-shadow: 0 0 10px black, 0 0 30px black, 0 0 20px black, 0 0 30px black, 0 0 10px black;
+		}
+
+		#commonShop table
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 95%;
+			font-size: 1.5rem;
+		}
+		#commonShop table tbody tr td
+		{
+			padding: 10px;
+			font-family: supercell-magic;
+			transition: 0.5s;
+			color white;
+		}
+		#epicShop table
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 95%;
+			font-size: 1.5rem;
+		}
+		#epicShop table tbody tr td
+		{
+			padding: 10px;
+			font-family: supercell-magic;
+			transition: 0.5s;
+			color white;
+		}
+		#legendShop table
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 95%;
+			font-size: 1.5rem;
+		}
+		#legendShop table tbody tr td
+		{
+			padding: 10px;
+			font-family: supercell-magic;
+			transition: 0.5s;
+			color white;
+		}
+		#quickShop table
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 95%;
+			font-size: 1.5rem;
+		}
+		#quickShop table tbody tr td
+		{
+			padding: 10px;
+			font-family: supercell-magic;
+			transition: 0.5s;
+			color white;
+		}
+		#infoDisplay
+		{
+			position: absolute;
+			top: -150%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 85%;
+			height: 85%;
+			background: black;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#infoDisplay h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#infoDisplay h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#infoDisplay:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 40px lightgreen;
+		}
+		#infoDisplay p
+		{
+			font-family:  supercell-magic;
+			font-size: 0.8rem;
+			color: white;
+		}
+		#infoDisplay #infoBackBtn
+		{
+			position: absolute;
+			color: red;
+			width: 400px;
+			padding: 10px;
+			top: 90%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#infoDisplay #infoBackBtn:hover
+		{
+			letter-spacing: 8px;
+			width: 600px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#preLoadDisplay
+		{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			width: 85%;
+			height: 85%;
+			background: black;
+			color: red;
+			font-family: sectar;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+			user-select: none;
+			transition: 0.5s;
+		}
+		#preLoadDisplay h1
+		{
+			font-size: 3rem;
+			transition: 0.5s;
+			user-select: none;
+		}
+		#preLoadDisplay h1:hover
+		{
+			letter-spacing: 10px;
+			transition: 0.5s;
+			text-shadow: 0 0 10px white, 0 0 40px white, 0 0 20px white, 0 0 40px white, 0 0 10px white;
+		}
+		#preLoadDisplay:hover
+		{
+			transition: 0.5s;
+			box-shadow: 0 0 40px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 40px lightgreen;
+		}
+		#preLoadDisplay p
+		{
+			justify-content: center;
+			text-align: center;
+			font-size: 1.5rem;
+			color: white;
+			font-family: supercell-magic;
+		}
+		#preLoadDisplay h2
+		{
+			color: orange;
+			font-size: 2rem;
+		}
+		#preLoadDisplay input
+		{
+			outline: none;
+			background: transparent;
+			width: 300px;
+			height: 50px;
+			border: 2px solid red;
+			font-family: supercell-magic;
+			font-size: 1.2rem;
+			color: red;
+			transition: 0.5s;
+			border-radius: 100px;
+			text-align: center;
+		}
+		#preLoadDisplay input:focus
+		{
+			width: 500px;	
+			transition: 0.5s;
+			background-color: lightgreen;
+			box-shadow: 0 0 40px lightgreen, 0 0 60px lightgreen, 0 0 30px lightgreen, 0 0 60px lightgreen, 0 0 40px lightgreen;
+		}
+		#preLoadDisplay #loadUser
+		{
+			position: absolute;
+			color: red;
+			width: 500px;
+			padding: 10px;
+			top: 60%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#preLoadDisplay #loadUser:hover
+		{
+			letter-spacing: 5px;
+			width: 600px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		#preLoadDisplay #newUser
+		{
+			position: absolute;
+			color: red;
+			width: 500px;
+			padding: 10px;
+			top: 75%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border: 2px solid red;
+			border-radius: 100px;
+			cursor: pointer;
+			font-size: 30px;
+			transition: 0.5s;
+		}
+		#preLoadDisplay #newUser:hover
+		{
+			letter-spacing: 5px;
+			width: 600px;
+			transition: 0.5s;
+			color: green;
+			border: 2px solid green;
+			background: lightgreen;
+			box-shadow: 0 0 10px white, 0 0 30px white, 0 0 20px white, 0 0 30px white, 0 0 10px white;
+		}
+		.fish_img
+		{
+			width: 30%;
+			height: auto;
+		}
+		.resources_img
+		{
+			width: 15%;
+			height: auto;
+		}
+		.resources_imgA
+		{
+			width: 5%;
+			height: auto;
+		}
+		.Enemyfish_img
+		{
+			width: 5%;
+			height: auto;	
+		}
+		.bubble
+		{
+			width: 5%;
+			height: auto;		
+		}
+		.bonus
+		{
+			width: 10%;
+			height: auto;
+		}
+		#playerLoad
+		{
+			position: absolute;
+			top: 5%;
+			left: 15%;
+			transform: translate(-50%,-50%);
+			font-family: sectar;
+			color: red;
+			text-shadow: 0 0 10px black, 0 0 40px black, 0 0 20px black, 0 0 40px black, 0 0 10px black;
+			font-size: 1.8rem;
+			user-select: none;
+		}
+	</style>
+</head>
+<body>
+
+<div id="playerLoad"></div>
+
+<div id="main_menu">
+	
+	<span id="btnPlay">PLAY GAME</span>
+	<span id="btnScore">HIGH SCORE</span>
+	<span id="btnSetting">SHOP</span>
+	<span id="btnInfo">INFO.?</span>
+	<span id="btnLoad">LOAD</span>
+
+</div>
+
+<div id="settingDisplay">
+	
+	<h1>CUSTOMIZE YOUR PLAYER HERE!</h1>
+	<hr>
+	<span class="outerSpans" id="commonShopBtn">COMMON SKINS</span>
+	<span class="outerSpans" id="epicShopBtn">EPIC SKINS</span>
+	<span class="outerSpans" id="legendaryShopBtn">LEGENDARY SKINS</span>
+	<span class="outerSpans" id="quickDeals">QUICK BUY</span>
+
+	<span id="backBtn">BACK</span>
+
+</div>
+
+<div id="commonShop">
+	<table>
+		<tbody>
+			<tr>
+				<td>THE REDSKULL</td>
+				<td>THE SAD SANTA'S GIFT</td>
+			</tr>
+			<tr>
+				<td><img src="Resources/spritesheet/player/right/red.png" class="fish_img"></td>
+				<td><img src="Resources/spritesheet/player/right/black.png" class="fish_img"></td>
+			</tr>
+			<tr>
+				<td>Required Resources:</td>
+				<td>Required Resources:</td>
+			</tr>
+			<tr>
+				<td>FREE (DEFAULT SKIN)</td>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall.png" class="resources_img" title="COMMON MAGIC BALL">X2
+					<img src="Resources/spritesheet/Bonus/silverCoin.png" class="resources_img" title="SILVER COIN">X3
+					<img src="Resources/spritesheet/Bonus/goldCoin.png" class="resources_img" title="GOLD COIN">X3
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><span onclick="commonBuySystem(2,3,3)">BUY THIS SKIN!</span></td>
+			</tr>
+			<tr>
+				<td><span onclick="activateSkin('red')">ACTIVE THIS SKIN</span></td>
+				<td><span id="activeBtn2" style="display: none;" onclick="activateSkin('black')">ACTIVE THIS SKIN</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="epicShop">
+	<table>
+		<tbody>
+			<tr>
+				<td>THE GREEN LANTERN</td>
+				<td>THE POWER OF LOVE</td>
+			</tr>
+			<tr>
+				<td><img src="Resources/spritesheet/player/right/green.png" class="fish_img"></td>
+				<td><img src="Resources/spritesheet/player/right/purple.png" class="fish_img"></td>
+			</tr>
+			<tr>
+				<td>Required Resources:</td>
+				<td>Required Resources:</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall1.png" class="resources_img" title="LEGENDARY MAGIC BALL">X2
+					<img src="Resources/spritesheet/Bonus/silverCoin.png" class="resources_img" title="SILVER COIN">X5
+					<img src="Resources/spritesheet/Bonus/goldCoin.png" class="resources_img" title="GOLD COIN">X5
+				</td>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall1.png" class="resources_img" title="LEGENDARY MAGIC BALL">X4
+					<img src="Resources/spritesheet/Bonus/silverCoin.png" class="resources_img" title="SILVER COIN">X8
+					<img src="Resources/spritesheet/Bonus/goldCoin.png" class="resources_img" title="GOLD COIN">X5
+				</td>
+			</tr>
+			<tr>
+				<td><span onclick="epicBuySystem(2,5,5,'one')">BUY THIS SKIN!</span></td>
+				<td><span onclick="epicBuySystem(4,8,5,'two')">BUY THIS SKIN!</span></td>
+			</tr>
+			<tr>
+				<td><span id="epicBallAB1" style="display: none;" onclick="activateSkin('green')">ACTIVE THIS SKIN</span></td>
+				<td><span id="epicBallAB2" style="display: none;" onclick="activateSkin('purple')">ACTIVE THIS SKIN</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="legendShop">
+	<table>
+		<tbody>
+			<tr>
+				<td>THE KING OF DEEP DARK SEA</td>
+				<td>THE ELITE SOLDIER</td>
+			</tr>
+			<tr>
+				<td><img src="Resources/spritesheet/player/right/blue.png" class="fish_img"></td>
+				<td><img src="Resources/spritesheet/player/right/yellow.png" class="fish_img"></td>
+			</tr>
+			<tr>
+				<td>Required Resources:</td>
+				<td>Required Resources:</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall2.png" class="resources_img" title="LEGENDARY MAGIC BALL">X3
+					<img src="Resources/spritesheet/Bonus/silverCoin.png" class="resources_img" title="SILVER COIN">X10
+					<img src="Resources/spritesheet/Bonus/goldCoin.png" class="resources_img" title="GOLD COIN">X8
+				</td>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall2.png" class="resources_img" title="LEGENDARY MAGIC BALL">X5
+					<img src="Resources/spritesheet/Bonus/silverCoin.png" class="resources_img" title="SILVER COIN">X15
+					<img src="Resources/spritesheet/Bonus/goldCoin.png" class="resources_img" title="GOLD COIN">X10
+				</td>
+			</tr>
+			<tr>
+				<td><span onclick="legendBuySystem(3,10,8,'one')">BUY THIS SKIN!</span></td>
+				<td><span onclick="legendBuySystem(5,15,10,'two')">BUY THIS SKIN!</span></td>
+			</tr>
+			<tr>
+				<td><span id="legendBallAB1" style="display: none;" onclick="activateSkin('blue')">ACTIVE THIS SKIN</span></td>
+				<td><span id="legendBallAB2" style="display: none;" onclick="activateSkin('yellow')">ACTIVE THIS SKIN</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="quickShop">
+	<table>
+		<tbody>
+			<tr>
+				<td>BUY ALL EPIC SKINS</td>
+				<td>BUY ALL LEGENDARY SKINS</td>
+			</tr>
+			<tr>
+				<td>REQUIRED RESOURCES</td>
+				<td>REQUIRED RESOURCES</td>
+			</tr>
+			<tr>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall1.png" class="resources_img" title="EPIC MAGIC BALL">X5
+					<img src="Resources/spritesheet/Bonus/dimond.png" class="resources_img" title="DIMONDS">X20
+				</td>
+				<td>
+					<img src="Resources/spritesheet/Bonus/dimondBall2.png" class="resources_img" title="LEGENDARY MAGIC BALL">X5
+					<img src="Resources/spritesheet/Bonus/dimond.png" class="resources_img" title="DIMONDS">X35
+				</td>
+			</tr>
+			<tr>
+				<td><span onclick="quickBuySystem(5,20,'one')">GRAB THIS OFFER!</span></td>
+				<td><span onclick="quickBuySystem(5,35,'two')">GRAB THIS OFFER!</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div id="preLoadDisplay">
+	<h1>LOAD YOUR PROFILE</h1>
+	<hr>
+	<p>If you have played this game before, then you should load your profile for better experience otherwise if you are new player you can proceed without loading your profile...</p>
+	<br>
+	<h2>ENTER YOUR PROFILE NAME</h2>
+	<br>
+	<br>
+	<input type="" name="" id="inputByUser">
+	<br>
+	<br>
+	<span id="loadUser">LOAD MY PROFILE</span>
+	<br>
+	<br>
+	<span id="newUser">CONTINUE AS NEW PLAYER</span>
+</div>
+
+<div id="infoDisplay">
+	<h1>KNOW MORE ABOUT HOW TO PLAY!!</h1>
+	<hr>
+	<p>Basically, It is a very simple game! As it's name pronounce there will be some bubbles &nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/bubble/bubble.png" class="bubble">&nbsp;&nbsp;&nbsp;&nbsp;
+		that you need to pop and
+		The more bubbles you'll pop the more score you get........................But it is not that easy as it sounds.
+		<br>
+		<img src="Resources/spritesheet/enemy/single/red.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy/single/green.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy/single/pink.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy_jellyfish/animated_jellyfish/Jellyfish4.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy/single/blue.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy/single/orange.png" class="Enemyfish_img">
+		<img src="Resources/spritesheet/enemy/single/yellow.png" class="Enemyfish_img">
+		<br>
+		There will be some enemy fishes and some dangerous jellyfish also. From them you have to maintain distance otherwise they will have a greate dinner!! And one more advice be calm and do not go close enogh to enemy fishes and jellyfish.
+		<br>
+		But you do not need to worry a lot because there is a bonus fish &nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus_Fish/left/swim_000.png" class="bonus">&nbsp;&nbsp;&nbsp;&nbsp;
+		in this game that will give you some bonus such as Silver Coin , Gold Coin , Dimond , Common Magic Ball ,
+		Epic Magic Ball , Legendary Magic Ball 
+		<br>
+		<img src="Resources/spritesheet/Bonus/silverCoin.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus/goldCoin.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus/dimond.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus/dimondBall.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus/dimondBall1.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<img src="Resources/spritesheet/Bonus/dimondBall2.png" class="Enemyfish_img">&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>
+		And you have lot's of fun with this bonus items.....
+		You can buy a PLAYER FISH'S SKIN from the shop and lot's more coming in few updates...
+		You can use those bonus items for skins otherwise you can use dimonds to instantly buy a skin....But do not forget to load your profile before any purchase from shop.
+	</p>
+	<span id="infoBackBtn">BACK</span>
+</div>
+
+<div id="scoreDisplay">
+	<h1>WALL OF FAME</h1>
+	<br>
+	<hr>
+	<br>
+	<table id="Update_Tbl">
+		<tr>
+			<td title="IT SHOWS HOW HIGH IS THE RANK OF THE PLAYER">RANK</td>
+			<td title="IT WILL DISPLAY PLAYER'S NAME">NAME</td>
+			<td title="IT WILL DISPLAY PLAYER'S BEST SCORE">ALL TIME BEST SCORE</td>
+			<td title="IT WILL SHOW HOW MANY SILVER COIN HAVE THE PLAYER">SILVER COINS</td>
+			<td title="IT WILL SHOW HOW MANY GOLD COIN HAVE THE PLAYER">GOLD COINS</td>
+			<td title="IT WILL SHOW HOW MANY DIMONDS HAVE THE PLAYER">DIMONDS</td>
+			<td title="IT WILL SHOW HOW MANY C.M.B. HAVE THE PLAYER">COMMON MAGIC BALL</td>
+			<td title="IT WILL SHOW HOW MANY E.M.B. HAVE THE PLAYER">EPIC MAGIC BALL</td>
+			<td title="IT WILL SHOW HOW MANY L.M.B. HAVE THE PLAYER">LEGENDARY MAGIC BALL</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<span id="scoreBackBtn">BACK TO MAIN MENU</span>
+</div>
+
+<canvas>...CANVAS IS NOT SUPPORTED IN YOUR BROWSER...</canvas>
+
+</body>
+<script type="text/javascript" src="Resources/scripts/jquery.js"></script>
+<script type="text/javascript" src="Resources/scripts/mainMenuBgEffect.js"></script>
+<script type="text/javascript">
+	
+//Canvas Initiallization Is Here.......................................................................
+const canvas = document.querySelector('canvas');
+const c = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var playBtn = document.getElementById('btnPlay');
+var scoreBtn = document.getElementById('btnScore');
+var settingBtn = document.getElementById('btnSetting');
+var quitBtn = document.getElementById('btnQuit');
+var infoBtn = document.getElementById('btnInfo');
+
+var displayScore = document.getElementById('scoreDisplay');
+/*
+//Just For Testing........................................................................................
+c.fillStyle = 'red';
+c.fillRect(0,0,canvas.width,canvas.height);
+*/
+
+//All Required Variables Are Here.....................................................................
+//All Required Arrays Are Here........................................................................
+let gameFrame = 0;
+let animID;
+let fish_spawn_ID;
+let jellyFish_spawn_ID;
+let bonusFish_spawn_ID;
+let enemyArray = [];
+let enemyJellyFishArray = [];
+let bonusFishArray = [];
+let bonusItemsArray = [];
+let mouse = {
+	x: canvas.width/2,
+	y: 0
+};
+let dimondCollected = 0;
+let commonMagicBallCollected = 0;
+let epicMagicBallCollected = 0;
+let legendareyMagicBallCollected = 0;
+let goldCoinCollected = 0;
+let silverCoinCollected = 0;
+let bubbleBrust = 0;
+let bubbleMissed = 0;
+let isPlayed = false;
+let isLoaded = false;
+let localLoaded = false;
+let localPlayer;
+let current_player;
+localStorage.setItem("IS_LOADED",localLoaded);
+function playAudio2()
+{
+	var audio = new Audio('Resources/Sounds/menu_music_02.wav');
+	audio.play();
+	setTimeout(()=>{
+		playAudio();
+	},72500);
+}
+
+function playAudio1()
+{
+	var audio = new Audio('Resources/Sounds/menu_music.wav');
+	audio.play();
+	setTimeout(()=>{
+		playAudio2();
+	},64500);
+}
+
+function playAudio()
+{
+	var audio = new Audio('Resources/Sounds/menu_music_01.wav');
+	audio.play();
+	setTimeout(()=>{
+		playAudio1();
+	},72090);
+}
+function playOver()
+{
+	var audio = new Audio('Resources/Sounds/MouseOver.mp3');
+	audio.play();
+}
+function playDown()
+{
+	var audio = new Audio('Resources/Sounds/MouseDown.mp3');
+	audio.play();
+}
+
+$("#scoreBackBtn").click(function(){
+	$("#scoreDisplay").css("top","-150%");
+});
+
+$("#btnSetting").click(function(){
+	$("#commonShop").css("left","50%");
+	$("#settingDisplay").css("top","50%");
+});
+
+$("#btnInfo").click(function(){
+	$("#infoDisplay").css("top","50%");
+});
+
+$("#infoBackBtn").click(function(){
+	$("#infoDisplay").css("top","-150%");
+});
+
+$("#commonShopBtn").click(function(){
+	$("#commonShop").css("left","50%");
+	$("#epicShop").css("left","-150%");
+	$("#legendShop").css("left","-150%");
+	$("#quickShop").css("left","-150%");
+});
+
+$("#epicShopBtn").click(function(){
+	$("#epicShop").css("left","50%");
+	$("#commonShop").css("left","-150%");
+	$("#legendShop").css("left","-150%");
+	$("#quickShop").css("left","-150%");
+});
+
+$("#legendaryShopBtn").click(function(){
+	$("#legendShop").css("left","50%");
+	$("#epicShop").css("left","-150%");
+	$("#commonShop").css("left","-150%");
+	$("#quickShop").css("left","-150%");
+});
+
+$("#quickDeals").click(function(){
+	$("#legendShop").css("left","-150%");
+	$("#epicShop").css("left","-150%");
+	$("#commonShop").css("left","-150%");
+	$("#quickShop").css("left","50%");
+});
+
+$("#backBtn").click(function(){
+	$("#legendShop").css("left","-150%");
+	$("#epicShop").css("left","-150%");
+	$("#commonShop").css("left","-150%");
+	$("#settingDisplay").css("top","-150%");
+	$("#quickShop").css("left","-150%");
+});
+
+$("#btnLoad").click(function(){
+	$("#preLoadDisplay").css("top","50%");
+});
+
+$("#btnPlay").click(function(){
+	setTimeout(() => {
+		window.location = "Resources/Application.html";
+	},1999);
+});
+let playersDataArray = [];
+let scoreViaRank = [];
+
+function updateWallOfFame()
+{
+	let rank = 1;
+	for(let a=0;a<scoreViaRank.length;a++)
+	{
+		$("#Update_Tbl").append("<tr><td>"+rank+"</td><td>"+scoreViaRank[a].playerName+"</td><td>"+scoreViaRank[a].score+"</td><td>"+scoreViaRank[a].silverCoin+"</td><td>"+scoreViaRank[a].goldCoin+"</td><td>"+scoreViaRank[a].dimond+"</td><td>"+scoreViaRank[a].commomBall+"</td><td>"+scoreViaRank[a].epicBall+"</td><td>"+scoreViaRank[a].legendaryBall+"</td></tr>");
+		rank++;
+	}
+}
+
+function updateWall()
+{
+	playersDataArray = JSON.parse(localStorage.getItem("PLAYERS_DATA"));
+	scoreViaRank=playersDataArray;
+
+	for(let i=0;i<scoreViaRank.length;i++)
+	{
+		for(let j=0;j<scoreViaRank.length;j++)	
+		{
+			if(scoreViaRank[i].score>=scoreViaRank[j].score)
+			{
+				let temp = scoreViaRank[i];
+				scoreViaRank[i]=scoreViaRank[j];
+				scoreViaRank[j]=temp;
+			}
+		}
+	}
+	updateWallOfFame();
+}
+
+function updateCurrentPlayer()
+{
+	for(let i=0;i<playersDataArray.length;i++)
+	{
+		if(playersDataArray[i].playerName==current_player.playerName)
+		{
+			playersDataArray.splice(i,1);
+			playersDataArray.push(current_player);
+			localStorage.setItem("PLAYERS_DATA",JSON.stringify(playersDataArray));
+			localStorage.setItem("LOCAL_PLAYER",JSON.stringify(current_player));
+		}
+	}
+}
+
+function updateButtons()
+{
+	$("#activeBtn2").css("display","none");	
+	$("#epicBallAB1").css("display","none");	
+	$("#epicBallAB2").css("display","none");		
+	$("#legendBallAB1").css("display","none");	
+	$("#legendBallAB2").css("display","none");		
+	console.log(current_player.skinCollectionArray);
+	for(let i=0;i<current_player.skinCollectionArray.length;i++)
+	{
+		if(current_player.skinCollectionArray[i]=="black")
+		{
+			$("#activeBtn2").css("display","block");
+		}
+
+		if(current_player.skinCollectionArray[i]=="green")
+		{
+			$("#epicBallAB1").css("display","block");
+		}
+
+		if(current_player.skinCollectionArray[i]=="purple")
+		{
+			$("#epicBallAB2").css("display","block");	
+		}
+
+		if(current_player.skinCollectionArray[i]=="blue")
+		{
+			$("#legendBallAB1").css("display","block");
+		}
+
+		if(current_player.skinCollectionArray[i]=="yellow")
+		{
+			$("#legendBallAB2").css("display","block");	
+		}
+	}
+}
+
+function activateSkin(tag)
+{
+	if(current_player.activeSkin==tag)
+	{
+		alert("THIS SKIN IS ALREADY EQUIPPED!");
+	}
+	else
+	{
+		current_player.activeSkin = tag;
+		updateCurrentPlayer();
+		console.log(current_player);
+		alert("SKIN EQUIPEED SUCCESSFULLY!!");
+	}
+}
+
+function commonBuySystem(cb,sc,gc)
+{
+	//if(attr=="common")
+	//{
+		if(isLoaded==true)
+		{
+			if(current_player.commomBall>=cb && current_player.silverCoin>=sc && current_player.goldCoin>=gc)
+			{
+				alert("NEW SKIN IS JUST BOUGHT BY YOU ! YOU CAN SET NEW SKIN AS ACTIVE SKIN!");
+				current_player.commomBall-=cb;
+				current_player.silverCoin-=sc;
+				current_player.goldCoin-=gc;
+				current_player.skinCollectionArray.push("black");
+				updateCurrentPlayer();
+				updateWall();
+				$("#activeBtn2").css("display","block");
+			}
+			else
+			{
+				alert("YOU DO NOT HAVE ENOUGH RESOURCES TO BUY THIS SKIN!");
+			}
+		}
+		else
+		{
+			alert("IT SEEMS YOU DID NOT LOAD YOUR PROFILE! PLEASE LOAD YOUR PROFILE FOR USING THE SHOP!");
+		}
+	//}
+}
+
+function epicBuySystem(eb,sc,gc,unTag)
+{
+	if(isLoaded==true)
+	{
+		if(current_player.epicBall>=eb && current_player.silverCoin>=sc && current_player.goldCoin>=gc)
+		{
+			alert("NEW SKIN IS JUST BOUGHT BY YOU ! YOU CAN SET NEW SKIN AS ACTIVE SKIN!");
+			current_player.epicBall-=eb;
+			current_player.silverCoin-=sc;
+			current_player.goldCoin-=gc;
+			if(unTag == "one")
+			{
+				$("#epicBallAB1").css("display","block");
+				current_player.skinCollectionArray.push("green");
+				updateCurrentPlayer();
+				updateWall();
+
+			}
+			else
+			{
+				$("#epicBallAB2").css("display","block");	
+				current_player.skinCollectionArray.push("purple");
+				updateCurrentPlayer();
+				updateWall();
+			}
+		}
+		else
+		{
+			alert("YOU DO NOT HAVE ENOUGH RESOURCES TO BUY THIS SKIN!");
+		}
+	}
+	else
+	{
+		alert("IT SEEMS YOU DID NOT LOAD YOUR PROFILE! PLEASE LOAD YOUR PROFILE FOR USING THE SHOP!");
+	}
+}
+
+function legendBuySystem(lb,sc,gc,unTag)
+{
+	if(isLoaded==true)
+	{
+		if(current_player.legendaryBall>=lb && current_player.silverCoin>=sc && current_player.goldCoin>=gc)
+		{
+			alert("NEW SKIN IS JUST BOUGHT BY YOU ! YOU CAN SET NEW SKIN AS ACTIVE SKIN!");
+			current_player.legendaryBall-=lb;
+			current_player.silverCoin-=sc;
+			current_player.goldCoin-=gc;
+			if(unTag == "one")
+			{
+				$("#legendBallAB1").css("display","block");
+				current_player.skinCollectionArray.push("blue");
+				updateCurrentPlayer();
+				updateWall();
+
+			}
+			else
+			{
+				$("#legendBallAB2").css("display","block");	
+				current_player.skinCollectionArray.push("yellow");
+				updateCurrentPlayer();
+				updateWall();
+			}
+		}
+		else
+		{
+			alert("YOU DO NOT HAVE ENOUGH RESOURCES TO BUY THIS SKIN!");
+		}
+	}
+	else
+	{
+		alert("IT SEEMS YOU DID NOT LOAD YOUR PROFILE! PLEASE LOAD YOUR PROFILE FOR USING THE SHOP!");
+	}
+}
+
+function quickBuySystem(ball,dimonds,tag)
+{
+	if(isLoaded==true)
+	{
+		if(tag=="one")
+		{
+			if(current_player.epicBall>=ball && current_player.dimond>=dimonds)
+			{
+				current_player.epicBall-=ball;
+				current_player.dimond-=dimonds;
+				$("#epicBallAB1").css("display","block");
+				$("#epicBallAB2").css("display","block");
+				current_player.skinCollectionArray.push("green");
+				current_player.skinCollectionArray.push("purple");
+				updateCurrentPlayer();
+				updateWall();
+				alert("YOU HAVE SUCCESSFULLY PURCHASED THIS OFFER! NOW YOU CAN EQUIP ANY EPIC SKIN!");
+			}
+			else
+			{
+				alert("YOU DO NOT HAVE ENOUGH RESOURCES TO BUY THIS OFFER!");	
+			}
+		}
+		else if(tag=="two")
+		{
+			if(current_player.legendaryBall>=ball && current_player.dimond>=dimonds)
+			{
+				current_player.epicBall-=ball;
+				current_player.dimond-=dimonds;
+				$("#legendBallAB1").css("display","block");
+				$("#legendBallAB2").css("display","block");
+				current_player.skinCollectionArray.push("blue");
+				current_player.skinCollectionArray.push("yellow");
+				updateCurrentPlayer();
+				updateWall();
+				alert("YOU HAVE SUCCESSFULLY PURCHASED THIS OFFER! NOW YOU CAN EQUIP ANY LEGENDARY SKIN!");
+			}
+			else
+			{
+				alert("YOU DO NOT HAVE ENOUGH RESOURCES TO BUY THIS OFFER!");	
+			}
+		}
+	}
+	else
+	{
+		alert("IT SEEMS YOU DID NOT LOAD YOUR PROFILE! PLEASE LOAD YOUR PROFILE FOR USING THE SHOP!");
+	}
+}
+
+window.addEventListener('load',() => {
+	window.addEventListener('mousedown',()=>{
+		if(isPlayed==false)
+		{
+			playAudio();
+			isPlayed=true;
+		}
+	});
+	playBtn.addEventListener('mouseover',()=>{
+		
+		playOver();
+	});
+	playBtn.addEventListener('mousedown',()=>{
+		
+		playDown();
+	});
+
+	settingBtn.addEventListener('mouseover',()=>{
+		
+		playOver();
+	});
+	settingBtn.addEventListener('mousedown',()=>{
+		
+		playDown();
+	});
+
+	scoreBtn.addEventListener('mouseover',()=>{
+		playOver();
+	});
+	scoreBtn.addEventListener('mousedown',()=>{
+		playDown();
+		$("#scoreDisplay").css("top","50%");
+	});
+
+	infoBtn.addEventListener('mouseover',()=>{
+		
+		playOver();
+	});
+	infoBtn.addEventListener('mousedown',()=>{
+		
+		playDown();
+	});
+
+	btnLoad.addEventListener('mouseover',()=>{
+		
+		playOver();
+	});
+	btnLoad.addEventListener('mousedown',()=>{
+		
+		playDown();
+	});
+	updateWall();
+});
+
+$("#loadUser").click(function(){
+	let playerData = 0;
+	var playerName = $("#inputByUser").val();
+	if(isLoaded==false)
+	{
+
+		loop:for(let i=0;i<scoreViaRank.length;i++)
+		{
+			if(playerName==scoreViaRank[i].playerName)
+			{
+				isLoaded=true;
+				localLoaded = true;
+				playerData = i;
+				break loop;
+			}
+		}
+
+		if(isLoaded==false)
+		{
+			alert("NO PROFILE DATA FOUND ASSOCIATED WITH THIS USER NAME!");
+		}
+		else
+		{
+			alert("YOUR PROFILE LOADED SUCCESSFULLY!");
+			$("#playerLoad").text("PLAYER NAME : "+scoreViaRank[playerData].playerName);
+			$("#preLoadDisplay").css("top","-150%");
+			current_player = scoreViaRank[playerData];
+			localPlayer = localStorage.setItem("LOCAL_PLAYER",JSON.stringify(current_player));
+			localLoaded = localStorage.setItem("IS_LOADED",localLoaded);
+			updateButtons();
+		}
+	}
+	$("#playerLoad").css("display","block");
+	var input = document.getElementById('inputByUser');
+	input.value = "";
+	updateButtons();
+});
+
+$("#newUser").click(function(){
+	isLoaded=false;
+	$("#preLoadDisplay").css("top","-150%");
+	$("#playerLoad").css("display","none");
+});
+
+function MainAnimationLoop()
+{
+	animID = requestAnimationFrame(MainAnimationLoop);
+
+	c.clearRect(0,0,canvas.width,canvas.height);
+
+	c.drawImage(bgImage,0,0,canvas.width,canvas.height);
+
+	enemyArray.forEach((enemy,index) => {
+
+		if(enemy.fromLeft==true)
+		{
+			if(enemy.x > canvas.width+200)
+			{
+				setTimeout(()=>{
+					enemyArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				enemy.update();
+			}
+		}
+		else
+		{
+			if(enemy.x < -200)
+			{
+				setTimeout(()=>{
+					enemyArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				enemy.update();
+			}	
+		}
+
+	});
+
+	enemyJellyFishArray.forEach((enemy,index) => {
+
+		if(enemy.y<=-100)
+		{
+			setTimeout(() => {
+				enemyJellyFishArray.splice(index,1);
+			},0);
+		}
+		else
+		{
+			enemy.update();
+		}
+
+	});
+
+	bonusFishArray.forEach((bonusFish,index) => {
+
+		if(bonusFish.fromLeft==true)
+		{
+			if(bonusFish.position.x>=canvas.width+200)
+			{
+				setTimeout(() => {
+					bonusFishArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				bonusFish.update();
+			}
+		}
+		else
+		{
+			if(bonusFish.position.x<=-200)
+			{
+				setTimeout(() => {
+					bonusFishArray.splice(index,1);
+				},0);
+			}
+			else
+			{
+				bonusFish.update();
+			}
+		}
+
+		if(parseInt(bonusFish.position.x)==parseInt(bonusFish.bonus.x) && parseInt(bonusFish.position.y)==parseInt(bonusFish.bonus.y))
+		{
+			//dropBonus(bonusFish.bonus.x,bonusFish.bonus.y);
+		}
+
+	});
+
+	bonusItemsArray.forEach((item,index) => {
+
+		if(item.y>canvas.height+200)
+		{
+			setTimeout(() => {
+				bonusItemsArray.splice(index,1);
+			},0);
+		}
+		else
+		{
+			item.update();
+		}
+
+	});
+
+	ballsArray.forEach((ball,index) => {
+
+		if(ball.radius - ball.reduction > 1)
+		{
+			ball.updateBall();	
+		}
+		else
+		{
+			setTimeout(() => {
+				ballsArray.splice(index,1);
+			},0);
+		}
+
+	});
+
+	//Player.draw();
+
+	gameFrame++;
+}
+
+window.addEventListener('mousemove',(e) => {
+	mouse.x = e.clientX;
+	mouse.y = e.clientY;
+	setTimeout(() => {
+		createBall(mouse.x,mouse.y);
+	},0);
+});
+window.addEventListener('load',() => {
+	spawnBonusFish();
+	spawnEnemyFish();
+	spawnEnemyJellyFish();
+	MainAnimationLoop();
+});
+
+
+</script>
+</html>
